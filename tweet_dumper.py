@@ -7,10 +7,10 @@ import csv
 
 
 #Twitter API credentials
-consumer_key = ""
-consumer_secret = ""
-access_key = ""
-access_secret = ""
+consumer_key = "42gASvI1XycCuuGZUGwkCJfyM"
+consumer_secret = "ZY8Iy4QNKOVm6CxTxOdiQkQKZwIU2YmEjK4UQC75ptbdbnWLil"
+access_key = "719987846-dbSDJzBuLlmtsZ77CyzVxzbIAXJOo9cA37il0r8P"
+access_secret = "gflAfPbwYJ2g0Qu8xeQ4orOKP05Mvr3tz0Sb4fje3sQtR"
 
 
 def get_all_tweets(screen_name):
@@ -55,6 +55,8 @@ def get_all_tweets(screen_name):
         text = text.encode("utf-8")
         text = text.replace('|', ' ')
         text = text.replace('\n', ' ')
+        text = text.replace('&amp;', '&')
+        text = text.replace('&amp', '')
         temp = [tweet.id_str, tweet.created_at, text, tweet.retweet_count, tweet.favorite_count]
         outtweets.append(temp)
 
@@ -70,4 +72,4 @@ def get_all_tweets(screen_name):
 
 if __name__ == '__main__':
     #pass in the username of the account you want to download
-    get_all_tweets("")
+    get_all_tweets("HillaryClinton") #get_all_tweets("realDonaldTrump")
